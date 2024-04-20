@@ -1,37 +1,52 @@
 using UnityEngine;
 
-public class HealthSystem : MonoBehaviour
+public class DynamicDifficultyManager : MonoBehaviour
 {
-    public int maxHealth = 100;
-    private int currentHealth;
+    public float baseDifficulty = 1f; // Базовая сложность
+    public float difficultyIncreaseRate = 0.1f; // Скорость увеличения сложности
+    public float difficultyDecreaseRate = 0.05f; // Скорость снижения сложности
+
+    private float currentDifficulty;
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        currentDifficulty = baseDifficulty;
     }
 
-    public void TakeDamage(int damage)
+    private void Update()
     {
-        currentHealth -= damage;
-        Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
+        // Здесь вы можете добавить логику для оценки успехов игрока
+        // Например, проверять количество убитых врагов, пройденные уровни и т. д.
 
-        if (currentHealth <= 0)
+        // Пример: если игрок успешен, увеличиваем сложность
+        if (PlayerIsSuccessful())
         {
-            Die();
+            currentDifficulty += difficultyIncreaseRate * Time.deltaTime;
         }
+        else
+        {
+            currentDifficulty -= difficultyDecreaseRate * Time.deltaTime;
+        }
+
+        // Ограничиваем сложность в пределах разумных значений
+        currentDifficulty = Mathf.Clamp(currentDifficulty, 0.5f, 2f);
+
+        // Применяем текущую сложность к игре
+        ApplyDifficulty();
     }
 
-    private void Die()
+    private bool PlayerIsSuccessful()
     {
-      //  Реализуйте логику смерти(например, конец игры, возрождение и т.д.)
-        Debug.Log("Player died!");
+        // Здесь реализуйте свою логику для определения успехов игрока
+        // Например, проверьте, сколько врагов было убито, сколько очков набрано и т. д.
+        // Верните true, если игрок успешен, и false в противном случае.
+        return true; // Заглушка, замените на свою логику
     }
 
-   // Вызывайте этот метод, когда игрок подбирает аптечку или получает лечение
-    public void Heal(int amount)
+    private void ApplyDifficulty()
     {
-        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-        Debug.Log($"Player healed by {amount}. Current health: {currentHealth}");
+        // Здесь примените текущую сложность к параметрам игры
+        // Например, увеличьте скорость врагов, уменьшите здоровье игрока и т. д.
+        Debug.Log($"Текущая сложность: {currentDifficulty}");
     }
 }
-
