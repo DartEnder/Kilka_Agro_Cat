@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 979689008}
   - component: {fileID: 979689007}
   - component: {fileID: 979689006}
+  - component: {fileID: 979689009}
   m_Layer: 5
   m_Name: play
   m_TagString: Untagged
@@ -320,7 +321,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 979689007}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 529905f66512f984c99f7ebc81a6693f, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &979689007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +372,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979689004}
   m_CullTransparentMesh: 1
+--- !u!114 &979689009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979689004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529905f66512f984c99f7ebc81a6693f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1313055754
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +750,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 16.525064
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
